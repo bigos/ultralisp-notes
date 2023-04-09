@@ -15,7 +15,7 @@ failed
 
 **** Installation from apt
 #+begin_example
-sudo apt install docker.io
+sudo apt install docker.io docker-compose
 #+end_example
 
 gives the following version
@@ -23,3 +23,21 @@ gives the following version
 docker --version
 Docker version 20.10.21, build 20.10.21-0ubuntu1~22.04.2
 #+end_example
+
+** Running it on my machine
+
+there is an org file for that
+[[file:~/Programming/Lisp/ultralisp/DEV.org::*How to start server and worker outside Docker][How to start server and worker outside Docker]]
+
+and
+
+https://github.com/ultralisp/ultralisp#how-to-host-ultralisp-on-my-own-server
+
+after cloning the repo, trying to run:
+#+begin_example
+docker-compose run --rm mito migrate
+#+end_example
+
+gives me permission errors
+
+Why? Do I need sudo?
