@@ -2,3 +2,24 @@
 
 Ultralisp notes is a repo for note taking related to:
 https://github.com/ultralisp/ultralisp.
+
+** Dependencies
+
+*** Docker
+
+**** Installation for web page
+https://docs.docker.com/desktop/install/linux-install/
+https://docs.docker.com/desktop/install/ubuntu/
+
+failed
+
+**** Installation from apt
+#+begin_example
+sudo apt install docker.io
+#+end_example
+
+gives the following version
+#+begin_example
+docker --version
+Docker version 20.10.21, build 20.10.21-0ubuntu1~22.04.2
+#+end_example
