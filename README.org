@@ -1,0 +1,4 @@
+* README
+
+Ultralisp notes is a repo for note taking related to:
+https://github.com/ultralisp/ultralisp.
