@@ -62,3 +62,35 @@ ERROR:
         Supported filenames: docker-compose.yml, docker-compose.yaml, compose.yml, compose.yaml
 
 #+end_example
+
+https://docs.docker.com/engine/install/linux-postinstall/
+
+the fix
+#+begin_example
+sudo gpasswd -a $USER docker
+#+end_example
+
+#+begin_example
+docker run hello-world
+#+end_example
+
+gives
+#+begin_quote
+Unable to find image 'hello-world:latest' locally
+latest: Pulling from library/hello-world
+2db29710123e: Pull complete
+Digest: sha256:ffb13da98453e0f04d33a6eee5bb8e46ee50d08ebe17735fc0779d0349e889e9
+Status: Downloaded newer image for hello-world:latest
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+#+end_quote
+
+it was simple cd to ultralisp diretory
+
+#+begin_example
+cd ~/Programming/Lisp/ultralisp
+docker-compose run --rm mito migrate
+#+end_example
+
+gives lots of output that makes sense now
