@@ -65,7 +65,7 @@ ERROR:
 
 https://docs.docker.com/engine/install/linux-postinstall/
 
-the fix
+*** the fix
 #+begin_example
 sudo gpasswd -a $USER docker
 #+end_example
@@ -86,7 +86,7 @@ Hello from Docker!
 This message shows that your installation appears to be working correctly.
 #+end_quote
 
-it was simple cd to ultralisp diretory
+*** running docker compose
 
 #+begin_example
 cd ~/Programming/Lisp/ultralisp
@@ -94,3 +94,17 @@ docker-compose run --rm mito migrate
 #+end_example
 
 gives lots of output that makes sense now
+
+**** and an error
+
+#+begin_quote
+Step 15/36 : COPY dist-lw80 /lispworks
+ERROR: Service 'mito' failed to build : COPY failed: file not found in build context or excluded by .dockerignore: stat dist-lw80: file does not exist
+#+end_quote
+
+**** investigation
+two files with dist-lw80
+file:~/Programming/Lisp/ultralisp/Dockerfile::46
+file:~/Programming/Lisp/ultralisp/.github/workflows/build-and-deploy.yml::112
+
+I will try to comment out lines 39-61 in [[file:~/Programming/Lisp/ultralisp/Dockerfile::46][Dockerfile]] first.
