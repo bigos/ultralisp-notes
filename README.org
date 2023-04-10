@@ -4,6 +4,8 @@ Docker manuals
 https://docs.docker.com/
 Command ~docker info~ lets you find many important facts about the docker installation
 
+lots of info for beginners
+https://www.freecodecamp.org/news/where-are-docker-images-stored-docker-container-paths-explained/
 
 Ultralisp notes is a repo for note taking related to:
 https://github.com/ultralisp/ultralisp.
