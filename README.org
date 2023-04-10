@@ -33,7 +33,8 @@ and
 
 https://github.com/ultralisp/ultralisp#how-to-host-ultralisp-on-my-own-server
 
-after cloning the repo, trying to run:
+*** after cloning the repo,
+trying to run:
 #+begin_example
 docker-compose run --rm mito migrate
 #+end_example
@@ -44,3 +45,20 @@ Why? Do I need sudo?
 
 or
 https://docs.docker.com/engine/install/linux-postinstall/
+
+*** trying to fix permissions
+#+begin_example
+sudo gpasswd -a $USER docker
+#+end_example
+
+leads to another error
+
+#+begin_example
+$ docker-compose run --rm mito migrate
+ERROR:
+        Can't find a suitable configuration file in this directory or any
+        parent. Are you in the right directory?
+
+        Supported filenames: docker-compose.yml, docker-compose.yaml, compose.yml, compose.yaml
+
+#+end_example
