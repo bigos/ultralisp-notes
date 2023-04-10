@@ -1,5 +1,8 @@
 * README
 
+Docker manuals
+https://docs.docker.com/
+
 Ultralisp notes is a repo for note taking related to:
 https://github.com/ultralisp/ultralisp.
 
@@ -95,16 +98,52 @@ docker-compose run --rm mito migrate
 
 gives lots of output that makes sense now
 
-**** and an error
+**** and an LW error
 
 #+begin_quote
 Step 15/36 : COPY dist-lw80 /lispworks
 ERROR: Service 'mito' failed to build : COPY failed: file not found in build context or excluded by .dockerignore: stat dist-lw80: file does not exist
 #+end_quote
 
-**** investigation
+***** investigation
 two files with dist-lw80
 file:~/Programming/Lisp/ultralisp/Dockerfile::46
 file:~/Programming/Lisp/ultralisp/.github/workflows/build-and-deploy.yml::112
 
 I will try to comment out lines 39-61 in [[file:~/Programming/Lisp/ultralisp/Dockerfile::46][Dockerfile]] first.
+
+**** error in gen-deps-system, missing alexandria
+#+begin_quote
+; Loading "gen-deps-system"
+[1/3] System 'gen-deps-system' found. Loading the system..
+;
+; caught ERROR:
+;   READ error during COMPILE-FILE:
+;
+;     Package ALEXANDRIA does not exist.
+;
+;       Line: 111, Column: 35, File-Position: 5087
+;
+#+end_quote
+
+***** investigation
+gen deps in 4 files
+file:~/Programming/Lisp/ultralisp/Dockerfile::92
+file:~/Programming/Lisp/ultralisp/docker-compose.yml::155
+file:~/Programming/Lisp/ultralisp/Makefile::13
+file:~/Programming/Lisp/ultralisp/Lakefile::61
+
+this script
+file:~/Programming/Lisp/ultralisp/Dockerfile::92
+seems to pull
+https://github.com/40ants/gen-deps-system
+I have the fork
+https://github.com/bigos/gen-deps-system
+should I try to add alexandria and push
+file:~/Programming/Lisp/gen-deps-system/roswell/gen-deps-system.ros::8
+and modify this
+file:~/Programming/Lisp/ultralisp/Dockerfile::92
+to pull from
+https://github.com/bigos/gen-deps-system
+
+I have forks of two svetlak's repos and was able to run the docker command.
