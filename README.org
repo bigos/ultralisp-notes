@@ -166,4 +166,6 @@ sudo gpasswd -a $USER docker
 
 docker run hello-world
 
+cd ~/Programming/Lisp/ultralisp
+docker-compose run --rm mito migrate
 #+end_example
