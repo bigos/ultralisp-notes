@@ -153,3 +153,17 @@ to pull from
 https://github.com/bigos/gen-deps-system
 
 I have forks of two svetlak's repos and was able to run the docker command.
+
+
+
+** running it on another machine
+#+begin_example
+sudo apt install docker.io docker-compose
+docker --version
+sudo gpasswd -a $USER docker
+
+# log out and log in again
+
+docker run hello-world
+
+#+end_example
