@@ -172,6 +172,21 @@ sudo chmod 777 ./postgresql-data
 docker-compose up app
 #+end_example
 
+*** viewing the results
+Successful run of the above can be verified by opening another terminal and
+running the script with the command and output like this
+#+begin_example
+$ docker ps
+CONTAINER ID   IMAGE                                  COMMAND                  CREATED          STATUS          PORTS                                                NAMES
+d3bd09c5eafc   ultralisp_app                          "s6-svscan /etc/s6"      4 minutes ago    Up 4 minutes    127.0.0.1:8080->80/tcp, 127.0.0.1:14005->4005/tcp    ultralisp_app
+101b8acd2106   ultralisp_worker                       "s6-svscan /etc/s6"      4 minutes ago    Up 4 minutes    80/tcp, 127.0.0.1:14006->4005/tcp                    ultralisp_worker
+38281be13d25   artefactual/gearmand:1.1.19.1-alpine   "docker-entrypoint.s…"   4 minutes ago    Up 4 minutes    127.0.0.1:4730->4730/tcp                             ultralisp_gearman
+0c101b2d137b   elasticsearch:7.3.2                    "/usr/local/bin/dock…"   4 minutes ago    Up 4 minutes    127.0.0.1:9200->9200/tcp, 127.0.0.1:9300->9300/tcp   ultralisp_elastic
+19a8f63a7c38   postgres:10                            "docker-entrypoint.s…"   17 minutes ago   Up 17 minutes   127.0.0.1:5432->5432/tcp                             ultralisp_db
+457e9ec9dabb   postgres:10                            "docker-entrypoint.s…"   17 minutes ago   Up 17 minutes   127.0.0.1:5433->5432/tcp                             ultralisp_empty_db
+#+end_example
+
+
 ** deleting to start again
 https://stackoverflow.com/questions/44785585/how-can-i-delete-all-local-docker-images
 
