@@ -168,6 +168,8 @@ docker run hello-world
 
 cd ~/Programming/Lisp/ultralisp
 docker-compose run --rm mito migrate
+sudo chmod 777 ./postgresql-data
+docker-compose up app
 #+end_example
 
 ** deleting to start again
