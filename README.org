@@ -33,7 +33,7 @@ docker --version
 Docker version 20.10.21, build 20.10.21-0ubuntu1~22.04.2
 #+end_example
 
-** Running it on my machine
+** First unsuccessful running it on my machine
 
 there is an org file for that
 [[file:~/Programming/Lisp/ultralisp/DEV.org::*How to start server and worker outside Docker][How to start server and worker outside Docker]]
@@ -156,7 +156,7 @@ I have forks of two svetlak's repos and was able to run the docker command.
 
 
 
-** running it on another machine
+** Successful running it on another machine
 #+begin_example
 sudo apt install docker.io docker-compose
 docker --version
@@ -186,6 +186,9 @@ d3bd09c5eafc   ultralisp_app                          "s6-svscan /etc/s6"      4
 457e9ec9dabb   postgres:10                            "docker-entrypoint.s…"   17 minutes ago   Up 17 minutes   127.0.0.1:5433->5432/tcp                             ultralisp_empty_db
 #+end_example
 
+*** working web page
+Running the commands in the successful run should give working web page.
+http://localhost:8080/
 
 ** deleting to start again
 https://stackoverflow.com/questions/44785585/how-can-i-delete-all-local-docker-images
