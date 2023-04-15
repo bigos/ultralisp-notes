@@ -215,6 +215,22 @@ CL-USER> (uiop:getcwd)
 # i have no idea what should happen here
 #+end_example
 
+*** stopping all
+#+begin_example
+(lake:lake :target "stop")
+#+end_example
+
+#+begin_example
+docker-compose ps
+#+end_example
+~docker ps~ shows empty table
+~docker-compose ps~ shows containers in exit state
+
+Trying to restart with lake
+#+begin_example
+(lake:lake :target "devserver")
+#+end_example
+shows all conainers in up state except the ~ultralisp_empty_db~
 ** deleting to start again
 https://stackoverflow.com/questions/44785585/how-can-i-delete-all-local-docker-images
 
