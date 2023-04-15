@@ -168,8 +168,13 @@ docker run hello-world
 
 cd ~/Programming/Lisp/ultralisp
 docker-compose run --rm mito migrate
-sudo chmod 777 ./postgresql-data
+sudo chmod -v 777 ./postgresql-data
+
+# for prod
 docker-compose up app
+
+# for hacking
+docker-compose up --build --abort-on-container-exit app
 #+end_example
 
 *** viewing the results
@@ -189,6 +194,26 @@ d3bd09c5eafc   ultralisp_app                          "s6-svscan /etc/s6"      4
 *** working web page
 Running the commands in the successful run should give working web page.
 http://localhost:8080/
+
+*** using lake
+In REPL
+#+begin_example
+(ql:quickload :lake)
+
+CL-USER> (uiop:chdir "~/Programming/Lisp/ultralisp")
+0
+CL-USER> (uiop:getcwd)
+#P"/home/jacek/Programming/Lisp/ultralisp/"
+
+(lake:display-tasks)
+; gives list of tasks
+
+(lake:lake :target "version")
+; gives the same as: lake version
+
+(lake:lake :target "devserver")
+# i have no idea what should happen here
+#+end_example
 
 ** deleting to start again
 https://stackoverflow.com/questions/44785585/how-can-i-delete-all-local-docker-images
