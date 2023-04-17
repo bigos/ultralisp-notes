@@ -382,3 +382,6 @@ restarts (invokable by number or by possibly-abbreviated name):
 
 This is the suspect line
 file:~/.roswell/lisp/quicklisp/dists/quicklisp/software/log4cl-20211209-git/src/naming-sbcl.lisp::108
+
+permalink
+https://github.com/7max/log4cl/blob/d6293f9f1b6b8871b0a4417c4bb22afb9910b97f/src/naming-sbcl.lisp#L106
