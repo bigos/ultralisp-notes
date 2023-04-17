@@ -113,3 +113,37 @@ To load "cl-telegram-bot":
 This time it works.
 
 ** Creating my own simple bot
+package
+#+begin_example
+CL-USER> (defpackage the-bot (:use :cl :cl-telegram-bot))
+#<PACKAGE "THE-BOT">
+CL-USER> (in-package the-bot)
+#<PACKAGE "THE-BOT">
+THE-BOT>
+#+end_example
+
+
+intetaction
+#+begin_src lisp
+    ;; define
+  (defbot echo-bot)
+
+    ;; method 1
+  (defmethod on-message ((bot echo-bot)
+                         text)
+    (reply text))
+
+  ;; method 2
+  (defmethod on-command ((bot echo-bot)
+                         (command (eql :help))
+                         text)
+    (declare (ignorable text))
+    (reply "Just send me any text and I'll reply with the same text."))
+
+  ;;; method 3
+  (defmethod on-command ((bot echo-bot)
+                         (command (eql :start))
+                         text)
+    (declare (ignorable text))
+    (reply "Welcome Lisper! Have a fun, playing with cl-telegram-bot!"))
+#+end_src
