@@ -1,0 +1,80 @@
+* CL-TELEGRAM-BOT Notes
+
+** First suggestion
+The repository is here: https://github.com/40ants/cl-telegram-bot
+
+I’ll create a branch with the documentation stub soon and you will sent you
+instructions how to extend it.
+
+Meanwhile you can try to create your own simple bot using instructions from the
+README. And also you can read through documentation on documentation builder:
+https://40ants.com/doc/
+
+** Cloned repo
+file:~/Programming/Lisp/cl-telegram-bot/README.md::1
+file:~/Programming/Lisp/cl-telegram-bot/cl-telegram-bot.asd::1
+
+** Creating my own simple bot
+
+*** Naive loading from quicklisp fails:
+(ql:quickload :cl-telegram-bot)
+
+*** Trying to put cloned code in local projects
+#+begin_example
+jacek@jacek-ixtreme-M5850:~/quicklisp/local-projects$ ln -s /home/jacek/Programming/Lisp/cl-telegram-bot ./cl-telegram-bot
+jacek@jacek-ixtreme-M5850:~/quicklisp/local-projects$ ls -lh ./*teleg*
+  lrwxrwxrwx 1 jacek jacek 44 Apr 17 20:49 ./cl-telegram-bot -> /home/jacek/Programming/Lisp/cl-telegram-bot
+#+end_example
+
+*** First loading fails
+After putting cloned project in local folders, it fails to load
+~(ql:quickload :cl-telegram-bot)~
+
+#+begin_example
+[package bordeaux-threads]........................
+[package log4cl.package-setup]....................
+[package log4cl-impl]...
+;
+; caught ERROR:
+;   READ error during COMPILE-FILE:
+;
+;     Lock on package SB-C violated when interning LAMBDA-PARENT while in package
+;     LOG4CL-IMPL.
+;   See also:
+;     The SBCL Manual, Node "Package Locks"
+;
+;     (in form starting at line: 99, column: 0, position: 3779)
+.
+;
+; caught ERROR:
+;   READ error during COMPILE-FILE:
+;
+;     Lock on package SB-C violated when interning LAMBDA-PARENT while in package
+;     LOG4CL-IMPL.
+;   See also:
+;     The SBCL Manual, Node "Package Locks"
+;
+;     (in form starting at line: 99, column: 0, position: 3779)
+;
+; compilation unit aborted
+;   caught 3 fatal ERROR conditions
+;   caught 2 ERROR conditions
+; Evaluation aborted on #<UIOP/LISP-BUILD:COMPILE-FILE-ERROR {100D7AC5A3}>.
+CL-USER> (ql:uninstall :cl-telegram-bot)
+T
+CL-USER> (ql:quickload :cl-telegram-bot)
+To load "cl-telegram-bot":
+  Load 1 ASDF system:
+    cl-telegram-bot
+; Loading "cl-telegram-bot"
+;
+; caught ERROR:
+;   READ error during COMPILE-FILE:
+;
+;     Lock on package SB-C violated when interning LAMBDA-PARENT while in package
+;     LOG4CL-IMPL.
+;   See also:
+;     The SBCL Manual, Node "Package Locks"
+;
+;     (in form starting at line: 99, column: 0, position: 3779)
+#+end_example
