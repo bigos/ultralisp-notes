@@ -92,3 +92,21 @@ CL-USER> (ql:system-apropos "telegram")
 #+end_example
 
 That shows 2 different cl-telegram-bot systems in 2 different dists.
+
+*** loading
+#+begin_example
+CL-USER> (ql:quickload :cl-telegram-bot)
+To load "cl-telegram-bot":
+  Load 12 ASDF systems:
+    alexandria arrows cffi cl+ssl cl-annot cl-base64
+    cl-utilities fast-io iterate parse-declarations-1.0
+    uiop usocket
+  Install 43 Quicklisp releases:
+    40ants-cl-telegram-bot Bike-introspect-environment
+    C U T
+[package trivial-backtrace].......................
+[package cl-telegram-bot/core]
+(:CL-TELEGRAM-BOT)
+#+end_example
+
+This time it works.
