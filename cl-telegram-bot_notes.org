@@ -280,7 +280,7 @@ file:~/.roswell/helper.el::30
 and trying to run slime from the terminal and finding lisp version showed I was
 running my experimental compilation from source when I invoked slime from Emacs.
 
-**** Trying ros run in the terminal
+**** Trying ros run in the terminal in the wrong folder
 
 Running in the terminal gives me different lisp version:
 #+begin_example
@@ -309,4 +309,73 @@ restarts (invokable by number or by possibly-abbreviated name):
 
 ((LABELS QUICKLISP-CLIENT::RECURSE :IN QUICKLISP-CLIENT::COMPUTE-LOAD-STRATEGY) "cl-telegram-bot-docs")
    source: (CERROR "Try again" 'SYSTEM-NOT-FOUND :NAME NAME)
+#+end_example
+
+**** Trying ros run in the terminal in the RIGHT folder
+
+It gives another error
+#+begin_example
+acek@jacek-ixtreme-M5850:~/Programming/Lisp/cl-telegram-bot$ ros run
+* (ql:quickload :docs-builder)
+To load "docs-builder":
+  Load 5 ASDF systems:
+    alexandria asdf bordeaux-threads named-readtables uiop
+  Install 4 Quicklisp releases:
+    doc docs-builder log4cl pythonic-string-reader
+Downloading http://beta.quicklisp.org/archive/log4cl/2021-12-09/log4cl-20211209-git.tgz
+##########################################################################
+Downloading http://beta.quicklisp.org/archive/pythonic-string-reader/2018-07-11/pythonic-string-reader-20180711-git.tgz
+##########################################################################
+Downloading http://beta.quicklisp.org/archive/doc/2023-02-14/doc-20230214-git.tgz
+##########################################################################
+Downloading http://beta.quicklisp.org/archive/docs-builder/2023-02-14/docs-builder-20230214-git.tgz
+##########################################################################
+; Loading "docs-builder"
+[package log4cl.package-setup]....................
+[package log4cl-impl]....;
+; caught ERROR:
+;   READ error during COMPILE-FILE:
+;
+;     Lock on package SB-C violated when interning LAMBDA-PARENT while in package
+;     LOG4CL-IMPL.
+;   See also:
+;     The SBCL Manual, Node "Package Locks"
+;
+;     (in form starting at line: 99, column: 0, position: 3779)
+
+debugger invoked on a UIOP/LISP-BUILD:COMPILE-FILE-ERROR in thread
+#<THREAD tid=156897 "main thread" RUNNING {10044A0113}>:
+  COMPILE-FILE-ERROR while
+  compiling #<CL-SOURCE-FILE "log4cl" "src" "naming-sbcl">
+
+Type HELP for debugger help, or (SB-EXT:EXIT) to exit from SBCL.
+
+restarts (invokable by number or by possibly-abbreviated name):
+  0: [RETRY                        ] Retry
+                                     compiling #<CL-SOURCE-FILE "log4cl" "src" "naming-sbcl">.
+  1: [ACCEPT                       ] Continue, treating
+                                     compiling #<CL-SOURCE-FILE "log4cl" "src" "naming-sbcl">
+                                     as having been successful.
+  2:                                 Retry ASDF operation.
+  3: [CLEAR-CONFIGURATION-AND-RETRY] Retry ASDF operation after resetting the
+                                     configuration.
+  4:                                 Retry ASDF operation.
+  5:                                 Retry ASDF operation after resetting the
+                                     configuration.
+  6: [ABORT                        ] Give up on "docs-builder"
+  7: [REGISTER-LOCAL-PROJECTS      ] Register local projects and try again.
+  8:                                 Exit debugger, returning to top level.
+
+(UIOP/LISP-BUILD:CHECK-LISP-COMPILE-RESULTS NIL T T "~/asdf-action::format-action/" ((#<ASDF/LISP-ACTION:COMPILE-OP > . #<ASDF/LISP-ACTION:CL-SOURCE-FILE "log4cl" "src" "naming-sbcl">)))
+   error finding frame source: Bogus form-number: the source file has probably
+                               changed too much to cope with.
+   source: NIL
+0] 6
+;
+; compilation unit aborted
+;   caught 2 fatal ERROR conditions
+;   caught 1 ERROR condition
+
+(:DOCS-BUILDER)
+
 #+end_example
