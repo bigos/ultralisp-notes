@@ -78,3 +78,17 @@ To load "cl-telegram-bot":
 ;
 ;     (in form starting at line: 99, column: 0, position: 3779)
 #+end_example
+
+*** Trying to add Ultralisp
+Add ultralisp
+~(ql-dist:install-dist "http://dist.ultralisp.org/" :prompt nil)~ and remove
+the link to the cloned repo from local-projects. Also restart the REPL.
+
+*** verifying quicklisp can see the new repos
+#+begin_example
+CL-USER> (ql:system-apropos "telegram")
+#<SYSTEM cl-telegram-bot / cl-telegram-bot-20230214-git / quicklisp 2023-02-15>
+#<SYSTEM cl-telegram-bot / 40ants-cl-telegram-bot-20230407060324 / ultralisp 20230417193001>
+#+end_example
+
+That shows 2 different cl-telegram-bot systems in 2 different dists.
