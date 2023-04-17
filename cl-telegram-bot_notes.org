@@ -154,3 +154,104 @@ https://github.com/40ants/cl-telegram-bot
 
 Please note that Telegram possibly has a bug. If the bot name doe not end with
 bot but something like bot1, it will not work as expected.
+
+** Success
+This lead to working example with one minor difference from the original documentation
+
+** Roswell
+This page
+https://github.com/roswell/roswell/releases
+lists the latest version
+https://github.com/roswell/roswell/releases/tag/v22.12.14.113
+
+Installing it successfully can be confirmed in terminal:
+#+begin_example
+$ ros --version
+roswell 22.12.14.113(NO-GIT-REVISION)
+#+end_example
+
+** Qlot
+In terminal run:
+#+begin_example
+$ ros install qlot
+#+end_example
+
+The documentation is wrong about shell knowing about the newly installed qlot.
+The new qlot was installed to: ~/.roswell/bin/qlot~
+
+I may need to add
+#+begin_example
+/home/jacek/.roswell/bin
+#+end_example
+to the ~$PATH~.
+
+** Trying to follow the instructions
+
+#+begin_example
+cd ~/Programming/Lisp/cl-telegram-bot/
+qlot install
+#+end_example
+
+*** Bashrc modification
+That did not work, so I will add the relevant line to bashrc.
+#+begin_example
+$ echo '' >> ~/.bashrc
+$ echo 'export PATH="$PATH:$HOME/.roswell/bin"' >> ~/.bashrc
+#+end_example
+
+Restart the terminal and try new path. After running the following commands you
+should see ~.roswell/bin~ in the PATH and output of qlot help.
+#+begin_example
+$ echo $PATH | grep roswell/bin
+$ qlot help
+#+end_example
+
+*** Trying again
+
+**** install dependencies
+
+#+begin_example
+cd ~/Programming/Lisp/cl-telegram-bot/
+qlot install
+#+end_example
+
+The output installs ultralisp and lots of its archives and ends with:
+
+#+begin_example
+Downloading http://dist.ultralisp.org/archive/851/Shinmera-dissect-20220720101913.tgz
+##########################################################################
+Successfully installed.
+#+end_example
+
+**** install Emacs
+#+begin_example
+qlot exec ros emacs
+#+end_example
+
+That installs some dependencies and starts new Emacs and in the terminal
+displays a hint about modifying Emacs config.
+
+#+begin_example
+helper.el installed in "/home/jacek/.roswell/helper.el"
+
+To use, add this to your ~/.emacs:
+
+  (load (expand-file-name "~/.roswell/helper.el"))
+#+end_example
+
+For the time being I will ignore the Emacs config modification and will just
+copy the Emacs Lisp snippet to *scratch buffer* of the newly started Emacs and
+eval it there.
+
+Then I will open slime and evaluate: ~(ql:quickload :cl-telegram-bot-docs)~
+
+That will give error:
+#+begin_example
+(progn (load "/home/jacek/.roswell/lisp/slime/2023.02.15/swank-loader.lisp" :verbose t) (funcall (read-from-string "swank-loader:init") :from-emacs t) (funcall (read-from-string "swank:start-server") "/tmp/slime.120993"))
+
+fatal error encountered in SBCL pid 125425 tid 125425:
+core was built for runtime "6521a6bafe5f-root-2023-03-29-02-18-45" but this is "jacek-ixtreme-M5850-jacek-2023-04-17-19-31-34"
+
+
+Process inferior-lisp exited abnormally with code 1
+#+end_example
