@@ -113,7 +113,7 @@ To load "cl-telegram-bot":
 This time it works.
 
 ** Creating my own simple bot
-package
+defin package
 #+begin_example
 CL-USER> (defpackage the-bot (:use :cl :cl-telegram-bot))
 #<PACKAGE "THE-BOT">
@@ -122,8 +122,8 @@ CL-USER> (in-package the-bot)
 THE-BOT>
 #+end_example
 
+define methods
 
-intetaction
 #+begin_src lisp
     ;; define
   (defbot echo-bot)
@@ -147,3 +147,10 @@ intetaction
     (declare (ignorable text))
     (reply "Welcome Lisper! Have a fun, playing with cl-telegram-bot!"))
 #+end_src
+
+In desktop telegram client find ~BotFather~ and start communicating with him as
+per 40ants documentation.
+https://github.com/40ants/cl-telegram-bot
+
+Please note that Telegram possibly has a bug. If the bot name doe not end with
+bot but something like bot1, it will not work as expected.
