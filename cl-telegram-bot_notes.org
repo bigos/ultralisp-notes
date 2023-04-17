@@ -385,3 +385,10 @@ file:~/.roswell/lisp/quicklisp/dists/quicklisp/software/log4cl-20211209-git/src/
 
 permalink
 https://github.com/7max/log4cl/blob/d6293f9f1b6b8871b0a4417c4bb22afb9910b97f/src/naming-sbcl.lisp#L106
+
+
+
+crazy headless chicken chase
+file:~/Programming/sbcl/src/compiler/ir1util.lisp::357
+
+file:~/Programming/sbcl/src/compiler/node.lisp::31
