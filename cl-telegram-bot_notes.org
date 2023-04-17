@@ -255,3 +255,16 @@ core was built for runtime "6521a6bafe5f-root-2023-03-29-02-18-45" but this is "
 
 Process inferior-lisp exited abnormally with code 1
 #+end_example
+
+Now I will close all Emacs instances and will modify the Emacs config adding the
+recommended snippet.
+
+That leads to an error. Starting ~emacs --debug-init~ gives this error.
+#+begin_example
+Debugger entered--Lisp error: (void-function slime-setup)
+  (slime-setup roswell-slime-contribs)
+  (let ((slime-directory (roswell-directory type))) (add-to-list 'load-path slime-directory) (require 'slime-autoloads) (setq slime-backend (expand-file-name "swank-loader.lisp" slime-directory)) (setq slime-path slime-directory) (slime-setup roswell-slime-contribs))
+  (cond ((equal type "slime") (let ((slime-directory (roswell-directory type))) (add-to-list 'load-path slime-directory) (require 'slime-autoloads) (setq slime-backend (expand-file-name "swank-loader.lisp" slime-directory)) (setq slime-path slime-directory) (slime-setup roswell-slime-contribs))) ((equal type "sly") (add-to-list 'load-path (roswell-directory type)) (require 'sly-autoloads)))
+  (let ((type (or (condition-case nil (progn (roswell-opt "emacs.type")) (error nil)) "slime"))) (cond ((equal type "slime") (let ((slime-directory (roswell-directory type))) (add-to-list 'load-path slime-directory) (require 'slime-autoloads) (setq slime-backend (expand-file-name "swank-loader.lisp" slime-directory)) (setq slime-path slime-directory) (slime-setup roswell-slime-contribs))) ((equal type "sly") (add-to-list 'load-path (roswell-directory type)) (require 'sly-autoloads))))
+  eval-buffer(#<buffer  *load*-702221> nil "/home/jacek/.roswell/helper.el" nil t)  ; Reading at buffer position 1541
+#+end_example
