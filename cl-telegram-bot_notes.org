@@ -14,7 +14,8 @@ https://40ants.com/doc/
 file:~/Programming/Lisp/cl-telegram-bot/README.md::1
 file:~/Programming/Lisp/cl-telegram-bot/cl-telegram-bot.asd::1
 
-** Creating my own simple bot
+
+** Loading from Ultralisp
 
 *** Naive loading from quicklisp fails:
 (ql:quickload :cl-telegram-bot)
@@ -93,7 +94,7 @@ CL-USER> (ql:system-apropos "telegram")
 
 That shows 2 different cl-telegram-bot systems in 2 different dists.
 
-*** loading
+*** loading works
 #+begin_example
 CL-USER> (ql:quickload :cl-telegram-bot)
 To load "cl-telegram-bot":
@@ -110,3 +111,5 @@ To load "cl-telegram-bot":
 #+end_example
 
 This time it works.
+
+** Creating my own simple bot
