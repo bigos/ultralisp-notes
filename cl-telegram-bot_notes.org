@@ -379,3 +379,6 @@ restarts (invokable by number or by possibly-abbreviated name):
 (:DOCS-BUILDER)
 
 #+end_example
+
+This is the suspect line
+file:~/.roswell/lisp/quicklisp/dists/quicklisp/software/log4cl-20211209-git/src/naming-sbcl.lisp::108
