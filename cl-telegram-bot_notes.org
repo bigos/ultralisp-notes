@@ -257,7 +257,10 @@ Process inferior-lisp exited abnormally with code 1
 #+end_example
 
 Now I will close all Emacs instances and will modify the Emacs config adding the
-recommended snippet.
+recommended snippet to my Emacs config.
+#+begin_example
+(load (expand-file-name "~/.roswell/helper.el"))
+#+end_example
 
 That leads to an error. Starting ~emacs --debug-init~ gives this error.
 #+begin_example
@@ -267,4 +270,43 @@ Debugger entered--Lisp error: (void-function slime-setup)
   (cond ((equal type "slime") (let ((slime-directory (roswell-directory type))) (add-to-list 'load-path slime-directory) (require 'slime-autoloads) (setq slime-backend (expand-file-name "swank-loader.lisp" slime-directory)) (setq slime-path slime-directory) (slime-setup roswell-slime-contribs))) ((equal type "sly") (add-to-list 'load-path (roswell-directory type)) (require 'sly-autoloads)))
   (let ((type (or (condition-case nil (progn (roswell-opt "emacs.type")) (error nil)) "slime"))) (cond ((equal type "slime") (let ((slime-directory (roswell-directory type))) (add-to-list 'load-path slime-directory) (require 'slime-autoloads) (setq slime-backend (expand-file-name "swank-loader.lisp" slime-directory)) (setq slime-path slime-directory) (slime-setup roswell-slime-contribs))) ((equal type "sly") (add-to-list 'load-path (roswell-directory type)) (require 'sly-autoloads))))
   eval-buffer(#<buffer  *load*-702221> nil "/home/jacek/.roswell/helper.el" nil t)  ; Reading at buffer position 1541
+#+end_example
+
+I suspect problem in helper and will start debugging.
+file:~/.roswell/helper.el::1
+
+Initial suspicion about incorrectly detected emacs type was wrong.
+file:~/.roswell/helper.el::30
+and trying to run slime from the terminal and finding lisp version showed I was
+running my experimental compilation from source when I invoked slime from Emacs.
+
+**** Trying ros run in the terminal
+
+Running in the terminal gives me different lisp version:
+#+begin_example
+$ ros run
+* (lisp-implementation-type)
+"SBCL"
+* (lisp-implementation-version)
+"2.3.3"
+#+end_example
+
+but then I have error again
+#+begin_example
+* (ql:quickload :cl-telegram-bot-docs)
+
+debugger invoked on a QUICKLISP-CLIENT:SYSTEM-NOT-FOUND in thread
+#<THREAD tid=148860 "main thread" RUNNING {10044A0113}>:
+  System "cl-telegram-bot-docs" not found
+
+Type HELP for debugger help, or (SB-EXT:EXIT) to exit from SBCL.
+
+restarts (invokable by number or by possibly-abbreviated name):
+  0: [CONTINUE               ] Try again
+  1: [ABORT                  ] Give up on "cl-telegram-bot-docs"
+  2: [REGISTER-LOCAL-PROJECTS] Register local projects and try again.
+  3:                           Exit debugger, returning to top level.
+
+((LABELS QUICKLISP-CLIENT::RECURSE :IN QUICKLISP-CLIENT::COMPUTE-LOAD-STRATEGY) "cl-telegram-bot-docs")
+   source: (CERROR "Try again" 'SYSTEM-NOT-FOUND :NAME NAME)
 #+end_example
