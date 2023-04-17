@@ -392,3 +392,7 @@ crazy headless chicken chase
 file:~/Programming/sbcl/src/compiler/ir1util.lisp::357
 
 file:~/Programming/sbcl/src/compiler/node.lisp::31
+
+
+could it be...
+file:~/Programming/sbcl/src/compiler/ir1util.lisp::357
