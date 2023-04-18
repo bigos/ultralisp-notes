@@ -422,3 +422,27 @@ in Emacs REPL
 (ql:quickload :cl-telegram-bot-docs)
 #+end_example
 gives error ~System "cl-telegram-bot-docs" not found~
+
+verifying if the REPL from terminal can see ultralisp
+#+begin_example
+CL-USER> (ql:system-apropos "telegram")
+#<SYSTEM cl-telegram-bot / cl-telegram-bot-20230214-git / quicklisp 2023-02-15>
+; No value
+#+end_example
+only one system was found, so I need to add ultralisp and repeat apropos.
+
+#+begin_example
+(ql-dist:install-dist "http://dist.ultralisp.org/" :prompt nil)
+(ql:system-apropos "telegram")
+#+end_example
+Now apropos finds many ultralisp examples
+
+
+so, in Emacs REPL, try again
+#+begin_example
+(ql:quickload :cl-telegram-bot-docs)
+#+end_example
+and it fails with
+#+begin_example
+; Evaluation aborted on #<QUICKLISP-CLIENT:SYSTEM-NOT-FOUND {10060C6FE3}>.
+#+end_example
