@@ -210,8 +210,14 @@ $ qlot help
 
 **** install dependencies
 
+got to the right folder, make sure you are in the right branch and install dependencies
 #+begin_example
 cd ~/Programming/Lisp/cl-telegram-bot/
+
+git checkout documentation
+git pull
+git status
+
 qlot install
 #+end_example
 
