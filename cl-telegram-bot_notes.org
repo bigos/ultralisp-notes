@@ -447,6 +447,12 @@ and it fails with
 ; Evaluation aborted on #<QUICKLISP-CLIENT:SYSTEM-NOT-FOUND {10060C6FE3}>.
 #+end_example
 
+i seem to be in correct path
+#+begin_example
+(uiop:getcwd)
+#P"/home/jacek/Programming/Lisp/cl-telegram-bot/"
+#+end_example
+
 ** strange finding
 In one terminal tab I had sbcl running with Emacs REPL connected to it.
 I opened another tab and qlot would not work.
@@ -473,3 +479,30 @@ Backtrace for: #<SB-THREAD:THREAD tid=32148 "main thread" RUNNING {1004490113}>
 12: (ASDF/OPERATE:LOAD-SYSTEM #:QLOT/CLI)
 
 #+end_example
+
+Closing that new tab, closing Emacs and closing the terminal sbcl allows me to try qlot again.
+#+begin_example
+jacek@jacek-Inspiron-7306-2n1:~/Programming/Lisp/cl-telegram-bot$ qlot install
+Unhandled ASDF/FIND-COMPONENT:MISSING-COMPONENT in thread #<SB-THREAD:THREAD tid=32490 "main thread" RUNNING
+                                                             {1004490113}>:
+  Component #:QLOT/CLI not found
+
+Backtrace for: #<SB-THREAD:THREAD tid=32490 "main thread" RUNNING {1004490113}>
+0: (SB-DEBUG::DEBUGGER-DISABLED-HOOK Component #:QLOT/CLI not found #<unused argument> :QUIT T)
+1: (SB-DEBUG::RUN-HOOK *INVOKE-DEBUGGER-HOOK* Component #:QLOT/CLI not found)
+2: (INVOKE-DEBUGGER Component #:QLOT/CLI not found)
+3: (ERROR ASDF/FIND-COMPONENT:MISSING-COMPONENT :REQUIRES #:QLOT/CLI)
+4: ((:METHOD ASDF/OPERATE:OPERATE (SYMBOL T)) ASDF/LISP-ACTION:LOAD-OP #:QLOT/CLI) [fast-method]
+5: ((SB-PCL::EMF ASDF/OPERATE:OPERATE) #<unused argument> #<unused argument> ASDF/LISP-ACTION:LOAD-OP #:QLOT/CLI)
+6: ((LAMBDA NIL :IN ASDF/OPERATE:OPERATE))
+7: ((:METHOD ASDF/OPERATE:OPERATE :AROUND (T T)) ASDF/LISP-ACTION:LOAD-OP #:QLOT/CLI) [fast-method]
+8: (ASDF/SESSION:CALL-WITH-ASDF-SESSION #<FUNCTION (LAMBDA NIL :IN ASDF/OPERATE:OPERATE) {10023D5B6B}> :OVERRIDE T :KEY NIL :OVERRIDE-CACHE T :OVERRIDE-FORCING NIL)
+9: ((LAMBDA NIL :IN ASDF/OPERATE:OPERATE))
+10: (ASDF/SESSION:CALL-WITH-ASDF-SESSION #<FUNCTION (LAMBDA NIL :IN ASDF/OPERATE:OPERATE) {10023BD4DB}> :OVERRIDE NIL :KEY NIL :OVERRIDE-CACHE NIL :OVERRIDE-FORCING NIL)
+11: ((:METHOD ASDF/OPERATE:OPERATE :AROUND (T T)) ASDF/LISP-ACTION:LOAD-OP #:QLOT/CLI) [fast-method]
+12: (ASDF/OPERATE:LOAD-SYSTEM #:QLOT/CLI)
+13: ((LAMBDA NIL :IN "/home/jacek/.roswell/bin/qlot"))
+
+#+end_example
+
+And again we have no luck
