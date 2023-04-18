@@ -278,7 +278,7 @@ file:~/.roswell/helper.el::1
 Initial suspicion about incorrectly detected emacs type was wrong.
 file:~/.roswell/helper.el::30
 and trying to run slime from the terminal and finding lisp version showed I was
-running my experimental compilation from source when I invoked slime from Emacs.
+running my experimental sbcl compiled from source when I invoked slime from Emacs.
 
 **** Trying ros run in the terminal in the wrong folder
 
