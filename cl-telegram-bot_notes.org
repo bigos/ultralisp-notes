@@ -402,3 +402,23 @@ file:~/Programming/sbcl/src/compiler/node.lisp::31
 
 could it be...
 file:~/Programming/sbcl/src/compiler/ir1util.lisp::357
+
+**** Trying to run sbcl in terminal in right folder and using Emacs for REPL
+
+in terminal
+#+begin_example
+jacek@jacek-Inspiron-7306-2n1:~/Programming/Lisp/cl-telegram-bot$ ros run
+* (ql:quickload :swank)
+* (swank:create-server :port 4005)
+#+end_example
+
+in Emacs
+#+begin_example
+M-x slime-connect
+#+end_example
+
+in Emacs REPL
+#+begin_example
+(ql:quickload :cl-telegram-bot-docs)
+#+end_example
+gives error ~System "cl-telegram-bot-docs" not found~
