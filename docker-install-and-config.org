@@ -17,7 +17,7 @@ sudo apt-get install docker
 **** Install Pip
 
 #+begin_example
-sudo apt-get install python-pip
+sudo apt-get install python3-pip
 #+end_example
 
 **** Install docker-compose
