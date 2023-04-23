@@ -11,7 +11,7 @@ https://phase2.github.io/devtools/getting-started/linux-installation/#linux-inst
 
 **** Install docker
 #+begin_example
-sudo apt-get install docker
+sudo apt-get install docker.io
 #+end_example
 
 **** Install Pip
