@@ -49,3 +49,10 @@ systemctl restart NetworkManager
 #+begin_example
 sudo reboot
 #+end_example
+
+** starting again
+
+nuke it
+#+begin_example
+sudo apt purge docker-compose docker.io  python3-docker  python3-dockerpty
+#+end_example
