@@ -16,6 +16,12 @@ https://github.com/bigos/ultralisp
 
 *** Docker
 
+The unsuccessful attempt did not take into consideration the relevant documentation
+
+https://phase2.github.io/devtools/getting-started/linux-installation/#linux-installation-on-ubuntulinux-mintdebian
+
+https://phase2.github.io/devtools/getting-started/linux-installation/#linux-dns-configuration-options
+
 **** Installation for web page
 https://docs.docker.com/desktop/install/linux-install/
 https://docs.docker.com/desktop/install/ubuntu/
@@ -241,3 +247,9 @@ docker rmi -f $(docker images -aq)
 
 ** SSH into a container
 https://phase2.github.io/devtools/common-tasks/ssh-into-a-container/
+
+** docker service installation and status on Ubuntu like systems
+[[https://phase2.github.io/devtools/getting-started/linux-installation/#linux-installation-on-ubuntulinux-mintdebian][installation on Ubuntu]]
+
+checking the service
+jacek@jacek-Lenovo-YOGA-3-Pro-1370:~$ sudo service postgresql status^C
