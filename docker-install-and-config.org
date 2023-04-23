@@ -1,0 +1,51 @@
+* Docker install and config
+
+** documentation
+https://phase2.github.io/devtools/
+
+** linux installation
+https://phase2.github.io/devtools/getting-started/linux-installation/
+
+*** ubuntu and mint
+https://phase2.github.io/devtools/getting-started/linux-installation/#linux-installation-on-ubuntulinux-mintdebian
+
+**** Install docker
+#+begin_example
+sudo apt-get install docker-engine
+#+end_example
+
+**** Install Pip
+
+#+begin_example
+sudo apt-get install python-pip
+#+end_example
+
+**** Install docker-compose
+
+#+begin_example
+sudo pip install docker-compose
+#+end_example
+
+**** Add your user to the Docker group
+
+#+begin_example
+sudo usermod -aG docker $USER
+#+end_example
+
+**** DNS options
+
+#+begin_example
+echo 'DOCKER_OPTS="-dns=172.17.0.1"' | sudo tee /etc/default/docker
+#+end_example
+
+**** DNS configuration with Network Manager
+
+#+begin_example
+echo 'server=/vm/172.17.0.1' | sudo tee /etc/NetworkManager/dnsmasq.d/dnsdock.conf
+systemctl restart NetworkManager
+#+end_example
+
+**** reboot
+#+begin_example
+sudo reboot
+#+end_example
